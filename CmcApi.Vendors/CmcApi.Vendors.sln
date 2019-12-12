@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmcApi.Vendors", "CmcApi.Vendors\CmcApi.Vendors.csproj", "{80F810C1-B94D-4497-A35B-EB33A31FC109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CmcApi.Vendors", "CmcApi.Vendors\CmcApi.Vendors.csproj", "{80F810C1-B94D-4497-A35B-EB33A31FC109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmcApi.Services", "CmcApi.Services\CmcApi.Services.csproj", "{6D2DD4C5-786D-41ED-89E4-1819526ACB02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CmcApi.Services", "CmcApi.Services\CmcApi.Services.csproj", "{6D2DD4C5-786D-41ED-89E4-1819526ACB02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmcApi.Data", "CmcApi.Data\CmcApi.Data.csproj", "{833DD022-13B5-4A2F-AF11-90D9101D9423}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmcApi.Database.Mssql", "CmcApi.Database.Mssql\CmcApi.Database.Mssql.csproj", "{17E2C187-CD61-4AE9-91A5-CB595A4E8D3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CmcApi.Database.Entity", "CmcApi.Database.Entity\CmcApi.Database.Entity.csproj", "{B1CF94F4-EA81-4316-8F28-6A718249AEA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,14 @@ Global
 		{6D2DD4C5-786D-41ED-89E4-1819526ACB02}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D2DD4C5-786D-41ED-89E4-1819526ACB02}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D2DD4C5-786D-41ED-89E4-1819526ACB02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{833DD022-13B5-4A2F-AF11-90D9101D9423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{833DD022-13B5-4A2F-AF11-90D9101D9423}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{833DD022-13B5-4A2F-AF11-90D9101D9423}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{833DD022-13B5-4A2F-AF11-90D9101D9423}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E2C187-CD61-4AE9-91A5-CB595A4E8D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E2C187-CD61-4AE9-91A5-CB595A4E8D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E2C187-CD61-4AE9-91A5-CB595A4E8D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E2C187-CD61-4AE9-91A5-CB595A4E8D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1CF94F4-EA81-4316-8F28-6A718249AEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1CF94F4-EA81-4316-8F28-6A718249AEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1CF94F4-EA81-4316-8F28-6A718249AEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1CF94F4-EA81-4316-8F28-6A718249AEA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
