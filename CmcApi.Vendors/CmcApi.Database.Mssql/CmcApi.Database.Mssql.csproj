@@ -39,4 +39,9 @@
     <ProjectReference Include="..\CmcApi.Database.Entity\CmcApi.Database.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>
