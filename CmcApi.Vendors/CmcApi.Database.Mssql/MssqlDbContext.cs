@@ -1,8 +1,6 @@
-﻿using CmcApi.Database.Entity;
+﻿using CmcApi.Core.Entities;
+using CmcApi.Database.Entity;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CmcApi.Database.Mssql
 {
@@ -46,7 +44,10 @@ namespace CmcApi.Database.Mssql
         protected void OnModelCreatingBaseEntity<T>(ModelBuilder modelBuilder)
             where T : BaseEntity
         {
+            this.OnModelCreatingAuditedEntity<T>(modelBuilder);
+
             modelBuilder.Entity<T>().Property(b => b.IsDeleted).HasDefaultValue(false);
+            modelBuilder.Entity<T>().Property(b => b.Version).HasDefaultValue(1);
         }
 
         /// <summary>
@@ -57,8 +58,6 @@ namespace CmcApi.Database.Mssql
         protected void OnModelCreatingAuditedEntity<T>(ModelBuilder modelBuilder)
             where T : AuditedEntity
         {
-            this.OnModelCreatingBaseEntity<T>(modelBuilder);
-
             modelBuilder.Entity<T>().Property(b => b.Created).HasDefaultValueSql("GETDATE()");
         }
 

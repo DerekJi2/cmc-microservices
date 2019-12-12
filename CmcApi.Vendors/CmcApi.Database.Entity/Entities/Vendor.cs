@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CmcApi.Core;
+using CmcApi.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace CmcApi.Database.Entity
 {

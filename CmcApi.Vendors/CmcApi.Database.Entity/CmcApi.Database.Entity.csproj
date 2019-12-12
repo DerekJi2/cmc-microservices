@@ -13,4 +13,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CmcApi.Core\CmcApi.Core.csproj" />
+  </ItemGroup>
+
 </Project>
