@@ -1,16 +1,17 @@
 ﻿using CmcApi.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CmcApi.Database.Mssql.Repositories
+namespace CmcApi.Core.Repositories
 {
     public interface IBaseRepository<TEntity>
-        where TEntity : IBaseEntity
+        where TEntity : BaseEntity
     {
-        MssqlDbContext localDbContext { get; set; }
+        DbContext localDbContext { get; set; }
 
         IQueryable<TEntity> FindAll(bool? active = true);
 

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -8,6 +8,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CmcApi.Core\CmcApi.Core.csproj" />
+    <ProjectReference Include="..\CmcApi.Database.Entity\CmcApi.Database.Entity.csproj" />
+    <ProjectReference Include="..\CmcApi.Database.Mssql\CmcApi.Database.Mssql.csproj" />
+    <ProjectReference Include="..\CmcApi.Services\CmcApi.Services.csproj" />
   </ItemGroup>
 
 </Project>
