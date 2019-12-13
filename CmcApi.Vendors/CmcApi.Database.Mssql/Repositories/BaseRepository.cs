@@ -4,12 +4,12 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CmcApi.Core.Repositories
+namespace CmcApi.Database.Mssql.Repositories
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity>
         where TEntity : BaseEntity
     {
-        public DbContext localDbContext { get; set; }
+        public MssqlDbContext localDbContext { get; set; }
 
         protected DbSet<TEntity> localDbSet
         {
@@ -19,9 +19,9 @@ namespace CmcApi.Core.Repositories
             }
         }
 
-        public BaseRepository(DbContext dcsDbContext)
+        public BaseRepository(MssqlDbContext dbContext)
         {
-            this.localDbContext = dcsDbContext;
+            this.localDbContext = dbContext;
         }
 
 

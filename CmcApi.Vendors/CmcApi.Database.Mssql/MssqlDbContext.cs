@@ -15,6 +15,11 @@ namespace CmcApi.Database.Mssql
             _ConnectionString = connectionString;
         }
 
+        public MssqlDbContext(DbContextOptions<MssqlDbContext> options) : base(options)
+        {
+            _DbContectOptions = options;
+        }
+
         /// <summary>
         /// 
         /// </summary>

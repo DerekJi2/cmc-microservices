@@ -6,12 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CmcApi.Core.Repositories
+namespace CmcApi.Database.Mssql.Repositories
 {
     public interface IBaseRepository<TEntity>
         where TEntity : BaseEntity
     {
-        DbContext localDbContext { get; set; }
+        MssqlDbContext localDbContext { get; set; }
 
         IQueryable<TEntity> FindAll(bool? active = true);
 
