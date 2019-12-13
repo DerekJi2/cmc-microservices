@@ -33,7 +33,7 @@ namespace CmcApi.Database.Mssql
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            OnModelCreatingAuditedEntity<Vendor>(modelBuilder);
+            OnModelCreatingBaseEntity<Vendor>(modelBuilder);
         }
 
         /// <summary>
@@ -48,6 +48,7 @@ namespace CmcApi.Database.Mssql
 
             modelBuilder.Entity<T>().Property(b => b.IsDeleted).HasDefaultValue(false);
             modelBuilder.Entity<T>().Property(b => b.Version).HasDefaultValue(1);
+            modelBuilder.Entity<T>().Property(b => b.Guid).HasDefaultValueSql("NEWID()");
         }
 
         /// <summary>

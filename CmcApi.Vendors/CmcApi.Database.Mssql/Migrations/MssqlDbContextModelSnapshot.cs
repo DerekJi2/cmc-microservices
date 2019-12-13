@@ -38,6 +38,10 @@ namespace CmcApi.Database.Mssql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("NEWID()");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(false);
@@ -46,6 +50,10 @@ namespace CmcApi.Database.Mssql.Migrations
 
                     b.Property<string>("LegalName")
                         .HasMaxLength(255);
+
+                    b.Property<int?>("Version")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(1);
 
                     b.HasKey("Id");
 

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CmcApi.Database.Mssql.Migrations
 {
     [DbContext(typeof(MssqlDbContext))]
-    [Migration("20191212121834_SeedVendors")]
-    partial class SeedVendors
+    [Migration("20191213045502_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,6 +40,10 @@ namespace CmcApi.Database.Mssql.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("GETDATE()");
 
+                    b.Property<Guid>("Guid")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("NEWID()");
+
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(false);
@@ -48,6 +52,10 @@ namespace CmcApi.Database.Mssql.Migrations
 
                     b.Property<string>("LegalName")
                         .HasMaxLength(255);
+
+                    b.Property<int?>("Version")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValue(1);
 
                     b.HasKey("Id");
 

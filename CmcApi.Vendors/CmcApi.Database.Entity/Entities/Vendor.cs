@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CmcApi.Database.Entity
 {
-    public class Vendor: AuditedEntity
+    public class Vendor: BaseEntity
     {
         [MaxLength(25)]
         public string  Code { get; set; }

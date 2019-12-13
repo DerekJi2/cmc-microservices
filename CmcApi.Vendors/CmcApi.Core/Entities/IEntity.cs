@@ -15,7 +15,7 @@ namespace CmcApi.Core.Entities
         /// </summary>
         TPrimaryKey Id { get; set; }
 
-        string Guid { get; set; }
+        Guid Guid { get; set; }
 
         int? Version { get; set; }
     }

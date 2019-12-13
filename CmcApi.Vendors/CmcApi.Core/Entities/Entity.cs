@@ -26,13 +26,13 @@ namespace CmcApi.Core.Entities
         public Entity()
         {
             Version = 1;
-            Guid = System.Guid.NewGuid().ToString();
+            Guid = System.Guid.NewGuid();
         }
 
         [Key]
         public virtual TPrimaryKey Id { get; set; }
 
-        public virtual string Guid { get; set; }
+        public virtual Guid Guid { get; set; }
 
         public virtual int? Version { get; set; }
 
