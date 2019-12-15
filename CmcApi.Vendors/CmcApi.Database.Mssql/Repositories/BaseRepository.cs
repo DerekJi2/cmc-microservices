@@ -72,17 +72,17 @@ namespace CmcApi.Database.Mssql.Repositories
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> CreateAsync(TEntity entity)
+        public async Task<string> CreateAsync(TEntity entity)
         {
             try
             {
                 await localDbSet.AddAsync(entity);
                 await localDbContext.SaveChangesAsync();
-                return true;
+                return entity.Guid.ToString();
             }
             catch (Exception ex)
             {
-                return false;
+                throw new Exception("Failed to create entity.", ex);
             }
 
         }
@@ -93,17 +93,17 @@ namespace CmcApi.Database.Mssql.Repositories
         /// <param name="id"></param>
         /// <param name="entity"></param>
         /// <returns></returns>
-        public async Task<bool> UpdateAsync(int id, TEntity entity)
+        public async Task<TEntity> UpdateAsync(int id, TEntity entity)
         {
             try
             {
                 localDbSet.Update(entity);
                 await localDbContext.SaveChangesAsync();
-                return true;
+                return entity;
             }
             catch (Exception ex)
             {
-                return false;
+                throw new Exception("Failed to update entity.", ex);
             }
         }
 

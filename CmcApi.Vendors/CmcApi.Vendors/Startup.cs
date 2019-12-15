@@ -13,14 +13,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace CmcApi.Vendors
 {
     public partial class Startup
     {
+        protected readonly string SwaggerTitle;
+        protected readonly string SwaggerVersion;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            SwaggerTitle = Configuration.GetSection("Swagger:Title").Value;
+            SwaggerVersion = Configuration.GetSection("Swagger:Version").Value;
         }
 
         public IConfiguration Configuration { get; }
@@ -40,6 +47,12 @@ namespace CmcApi.Vendors
             InejctInfrastructures(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Register the Swagger generator, defining 1 or more Swagger documents
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc(SwaggerVersion, new Info { Title = SwaggerTitle, Version = SwaggerVersion });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +74,17 @@ namespace CmcApi.Vendors
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint($"/swagger/{SwaggerVersion}/swagger.json", $"{SwaggerTitle} {SwaggerVersion}");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseMvc();
         }

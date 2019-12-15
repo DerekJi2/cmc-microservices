@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CmcApi.Database.Entity;
 using CmcApi.Services.DataServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CmcApi.Vendors.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class VendorsController : ControllerBase
     {
@@ -17,45 +18,54 @@ namespace CmcApi.Vendors.Controllers
             localVendorsDataService = vendorsDataService;
         }
 
-        // GET api/values
+        // GET api/v1/vendors
         [HttpGet]
-        [Route("values")]
-        public ActionResult<IEnumerable<string>> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        [HttpGet]
-        [Route("")]
         public ActionResult FindAll()
         {
             var vendors = localVendorsDataService.FindAll();
             return Ok(vendors);
         }
 
-        // GET api/values/5
+        // GET api/v1/vendors/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<ActionResult<string>> GetAsync(int id)
         {
-            return "value";
+            var vendor = await localVendorsDataService.FindByIdAsync(id);
+            return Ok(vendor);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult> PostAsync([FromBody] Vendor entity)
         {
+            if (entity != null)
+            {
+                var result = await localVendorsDataService.CreateAsync(entity);
+                return Ok(result);
+            }
+
+            return BadRequest("Entity is empty.");
         }
 
-        // PUT api/values/5
+        // PUT api/v1/vendors/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> PutAsync(int id, [FromBody] Vendor entity)
         {
+            if (entity != null)
+            {
+                var result = await localVendorsDataService.UpdateAsync(id, entity);
+                return Ok(result);
+            }
+
+            return BadRequest("Entity is empty.");
         }
 
-        // DELETE api/values/5
+        // DELETE api/v1/vendors/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> SoftDelete(int id)
         {
+            var result = await localVendorsDataService.SoftDeleteAsync(id);
+            return Ok(result);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CmcApi.Core.Services;
 using CmcApi.Database.Mssql;
 using CmcApi.Database.Mssql.Repositories;
+using CmcApi.Services;
 using CmcApi.Services.DataServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +22,8 @@ namespace CmcApi.Vendors
             this.InjectDbContext(services);
 
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+
+            services.AddScoped(typeof(IBaseDataService<>), typeof(BaseDataService<>));
 
             services.AddTransient<IVendorsDataService, VendorsDataService>();
 

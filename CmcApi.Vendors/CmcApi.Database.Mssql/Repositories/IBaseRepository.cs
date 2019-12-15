@@ -21,9 +21,9 @@ namespace CmcApi.Database.Mssql.Repositories
 
         Task<TEntity> FindByIdWithoutTrackingAsync(int id, bool? active = true);
 
-        Task<bool> CreateAsync(TEntity entity);
+        Task<string> CreateAsync(TEntity entity);
 
-        Task<bool> UpdateAsync(int id, TEntity entity);
+        Task<TEntity> UpdateAsync(int id, TEntity entity);
 
         Task<bool> RemoveAsync(int id);
 

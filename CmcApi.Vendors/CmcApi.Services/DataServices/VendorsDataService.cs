@@ -7,24 +7,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace CmcApi.Services.DataServices
 {
-    public class VendorsDataService : BaseService, IVendorsDataService
+    public class VendorsDataService : BaseDataService<Vendor>, IVendorsDataService
     {
         protected readonly IBaseRepository<Vendor> localVendorRepos;
 
         public VendorsDataService(
             IHttpContextAccessor httpContextAccessor,
             IBaseRepository<Vendor> vendorRepos
-            ) : base(httpContextAccessor)
+            ) : base(httpContextAccessor, vendorRepos)
         {
             localVendorRepos = vendorRepos;
-        }
-
-        public IQueryable<Vendor> FindAll(bool active = true)
-        {
-            return localVendorRepos.FindAll(active);
         }
     }
 }
